@@ -86,11 +86,10 @@
 				};
 			};
 			buildConfigurationList = 56A9D06F3058393F004E63B3 /* Build configuration list for PBXProject "AdotaPet" */;
-			developmentRegion = en;
+			developmentRegion = "pt-BR";
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
-				Base,
+				"pt-BR",
 			);
 			mainGroup = 56A9D06B3058393F004E63B3;
 			minimizedProjectReferenceProxies = 1;

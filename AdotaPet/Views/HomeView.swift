@@ -43,9 +43,18 @@ struct HomeView: View {
                     // filtros por espécie
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 12) {
+                            // botão "Todos"
+                            SpeciesFilterButton(
+                                title: String(localized: "filter.all"),
+                                isSelected: viewModel.selectedSpecies == nil
+                            ) {
+                                viewModel.selectedSpecies = nil
+                            }
+                            
+                            // botões por espécie
                             ForEach(viewModel.speciesOptions, id: \.self) { species in
                                 SpeciesFilterButton(
-                                    title: species,
+                                    title: species.name,
                                     isSelected: viewModel.selectedSpecies == species
                                 ) {
                                     viewModel.selectedSpecies = species

@@ -47,3 +47,12 @@
 // MARK: - Tab Bar
 "tabbar.home" = "Início";
 "tabbar.register" = "Cadastrar";
+
+// MARK: - Gender
+"addpet.gender.male" = "Macho";
+"addpet.gender.female" = "Fêmea";
+
+// MARK: - Size
+"addpet.size.small" = "Pequeno";
+"addpet.size.medium" = "Médio";
+"addpet.size.large" = "Grande";

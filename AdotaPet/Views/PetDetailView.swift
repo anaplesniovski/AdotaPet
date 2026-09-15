@@ -20,7 +20,7 @@ struct PetDetailView: View {
                     .frame(maxWidth: .infinity)
                     .frame(height: 280)
                     .overlay(
-                        Image(systemName: pet.species == "Cachorro" ? "dog.fill" : "cat.fill")
+                        Image(systemName: pet.species.icon)
                             .font(.system(size: 80))
                             .foregroundColor(Color("AppGreen"))
                     )
@@ -34,12 +34,12 @@ struct PetDetailView: View {
                             Text(pet.name)
                                 .font(.largeTitle)
                                 .fontWeight(.bold)
-                            Text("\(pet.breed) • \(pet.species)")
+                            Text("\(pet.breed) • \(pet.species.name)")
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                         }
                         Spacer()
-                        Text(pet.gender)
+                        Text(pet.gender.label)
                             .font(.subheadline)
                             .fontWeight(.semibold)
                             .foregroundColor(Color("AppGreen"))
@@ -52,7 +52,7 @@ struct PetDetailView: View {
                     // infos rápidas
                     HStack(spacing: 12) {
                         InfoChip(icon: "calendar", text: pet.age)
-                        InfoChip(icon: "arrow.up.and.down", text: pet.size)
+                        InfoChip(icon: "arrow.up.and.down", text: pet.size.description)
                         InfoChip(icon: "mappin.circle.fill", text: pet.city)
                     }
                     

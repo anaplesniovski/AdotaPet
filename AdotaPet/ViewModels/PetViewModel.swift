@@ -11,23 +11,13 @@ import Foundation
 class PetViewModel: ObservableObject {
     @Published var pets: [Pet] = MockPets.pets
     @Published var searchText: String = ""
-    @Published var selectedSpecies: String = ""
+    @Published var selectedSpecies: PetSpecies? = nil
     
-    let allOption = String(localized: "filter.all")
-    
-    let speciesOptions = [
-        String(localized: "filter.all"),
-        String(localized: "filter.dog"),
-        String(localized: "filter.cat")
-    ]
-    
-    init() {
-        selectedSpecies = allOption
-    }
+    let speciesOptions: [PetSpecies] = PetSpecies.allCases
     
     var filteredPets: [Pet] {
         pets.filter { pet in
-            let matchesSpecies = selectedSpecies == allOption || pet.species == selectedSpecies
+            let matchesSpecies = selectedSpecies == nil || pet.species == selectedSpecies
             let matchesSearch = searchText.isEmpty ||
                 pet.name.localizedCaseInsensitiveContains(searchText) ||
                 pet.breed.localizedCaseInsensitiveContains(searchText) ||

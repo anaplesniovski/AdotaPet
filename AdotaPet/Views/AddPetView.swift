@@ -11,11 +11,11 @@ struct AddPetView: View {
     @EnvironmentObject var viewModel: PetViewModel
     
     @State private var name = ""
-    @State private var species = "Cachorro"
+    @State private var species = PetSpecies.dog
     @State private var breed = ""
     @State private var age = ""
-    @State private var gender = "Macho"
-    @State private var size = "Médio"
+    @State private var gender = PetGender.male
+    @State private var size = PetSize.medium
     @State private var description = ""
     @State private var vaccinated = false
     @State private var neutered = false
@@ -23,10 +23,6 @@ struct AddPetView: View {
     @State private var contactPhone = ""
     @State private var city = ""
     @State private var showSuccess = false
-    
-    let speciesOptions = ["Cachorro", "Gato"]
-    let genderOptions = ["Macho", "Fêmea"]
-    let sizeOptions = ["Pequeno", "Médio", "Grande"]
     
     var isFormValid: Bool {
         !name.isEmpty && !breed.isEmpty && !age.isEmpty &&
@@ -44,7 +40,7 @@ struct AddPetView: View {
                         .fill(Color("AppGreen").opacity(0.15))
                         .frame(height: 140)
                         .overlay(
-                            Image(systemName: species == "Cachorro" ? "dog.fill" : "cat.fill")
+                            Image(systemName: species.icon)
                                 .font(.system(size: 60))
                                 .foregroundColor(Color("AppGreen"))
                         )
@@ -55,7 +51,9 @@ struct AddPetView: View {
                             CustomTextField(placeholder: String(localized: "addpet.field.name"), text: $name)
                             
                             Picker(String(localized: "addpet.field.species"), selection: $species) {
-                                ForEach(speciesOptions, id: \.self) { Text($0) }
+                                ForEach(PetSpecies.allCases, id: \.self) { option in
+                                    Text(option.name).tag(option)
+                                }
                             }
                             .pickerStyle(.segmented)
                             
@@ -63,14 +61,19 @@ struct AddPetView: View {
                             CustomTextField(placeholder: String(localized: "addpet.field.age"), text: $age)
                             
                             Picker(String(localized: "addpet.field.gender"), selection: $gender) {
-                                ForEach(genderOptions, id: \.self) { Text($0) }
+                                ForEach(PetGender.allCases, id: \.self) { option in
+                                    Text(option.label).tag(option)
+                                }
                             }
                             .pickerStyle(.segmented)
                             
                             Picker(String(localized: "addpet.field.size"), selection: $size) {
-                                ForEach(sizeOptions, id: \.self) { Text($0) }
+                                ForEach(PetSize.allCases, id: \.self) { option in
+                                    Text(option.description).tag(option)
+                                }
                             }
                             .pickerStyle(.segmented)
+
                         }
                         .padding(.top, 8)
                     }
@@ -156,11 +159,11 @@ struct AddPetView: View {
     
     private func resetForm() {
         name = ""
-        species = "Cachorro"
+        species = .dog
         breed = ""
         age = ""
-        gender = "Macho"
-        size = "Médio"
+        gender = .male
+        size = .medium
         description = ""
         vaccinated = false
         neutered = false

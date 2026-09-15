@@ -10,11 +10,11 @@ import Foundation
 struct Pet: Identifiable, Hashable {
     let id: UUID = UUID()
     let name: String
-    let species: String
+    let species: PetSpecies
     let breed: String
     let age: String
-    let gender: String
-    let size: String
+    let gender: PetGender
+    let size: PetSize
     let description: String
     let temperament: [String]
     let vaccinated: Bool

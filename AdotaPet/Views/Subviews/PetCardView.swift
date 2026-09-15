@@ -17,7 +17,7 @@ struct PetCardView: View {
                 .fill(Color("AppGreen").opacity(0.15))
                 .frame(width: 90, height: 90)
                 .overlay(
-                    Image(systemName: pet.species == "Cachorro" ? "dog.fill" : "cat.fill")
+                    Image(systemName: pet.species.icon)
                         .font(.system(size: 36))
                         .foregroundColor(Color("AppGreen"))
                 )
@@ -28,13 +28,13 @@ struct PetCardView: View {
                     .font(.headline)
                     .fontWeight(.bold)
                 
-                Text("\(pet.breed) • \(pet.species)")
+                Text("\(pet.breed) • \(pet.species.name)")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 
                 HStack(spacing: 8) {
                     Label(pet.age, systemImage: "calendar")
-                    Label(pet.gender, systemImage: "pawprint.fill")
+                    Label(pet.gender.label, systemImage: "pawprint.fill")
                 }
                 .font(.caption)
                 .foregroundColor(.secondary)
@@ -59,4 +59,9 @@ struct PetCardView: View {
         .cornerRadius(16)
         .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 2)
     }
+}
+
+#Preview {
+    PetCardView(pet: MockPets.pets[0])
+        .padding()
 }
