@@ -18,10 +18,10 @@ struct HomeView: View {
                     // header
                     HStack {
                         VStack(alignment: .leading, spacing: 4) {
-                            Text("Olá! 🐾")
+                            Text(String(localized: "home.greeting"))
                                 .font(.title2)
                                 .foregroundColor(.secondary)
-                            Text("Encontre um pet")
+                            Text(String(localized: "home.title"))
                                 .font(.title)
                                 .fontWeight(.bold)
                         }
@@ -33,7 +33,7 @@ struct HomeView: View {
                     HStack {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(.secondary)
-                        TextField("Buscar por nome, raça ou cidade...", text: $viewModel.searchText)
+                        TextField(String(localized: "home.search.placeholder"), text: $viewModel.searchText)
                     }
                     .padding(12)
                     .background(Color(.systemGray6))

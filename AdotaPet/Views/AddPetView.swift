@@ -50,24 +50,24 @@ struct AddPetView: View {
                         )
                     
                     // infos básicas
-                    GroupBox(label: Label("Informações Básicas", systemImage: "pawprint.fill").foregroundColor(Color("AppGreen"))) {
+                    GroupBox(label: Label(String(localized: "addpet.section.basic"), systemImage: "pawprint.fill").foregroundColor(Color("AppGreen"))) {
                         VStack(spacing: 12) {
-                            CustomTextField(placeholder: "Nome do pet", text: $name)
+                            CustomTextField(placeholder: String(localized: "addpet.field.name"), text: $name)
                             
-                            Picker("Espécie", selection: $species) {
+                            Picker(String(localized: "addpet.field.species"), selection: $species) {
                                 ForEach(speciesOptions, id: \.self) { Text($0) }
                             }
                             .pickerStyle(.segmented)
                             
-                            CustomTextField(placeholder: "Raça", text: $breed)
-                            CustomTextField(placeholder: "Idade (ex: 2 anos)", text: $age)
+                            CustomTextField(placeholder: String(localized: "addpet.field.breed"), text: $breed)
+                            CustomTextField(placeholder: String(localized: "addpet.field.age"), text: $age)
                             
-                            Picker("Gênero", selection: $gender) {
+                            Picker(String(localized: "addpet.field.gender"), selection: $gender) {
                                 ForEach(genderOptions, id: \.self) { Text($0) }
                             }
                             .pickerStyle(.segmented)
                             
-                            Picker("Porte", selection: $size) {
+                            Picker(String(localized: "addpet.field.size"), selection: $size) {
                                 ForEach(sizeOptions, id: \.self) { Text($0) }
                             }
                             .pickerStyle(.segmented)
@@ -76,19 +76,19 @@ struct AddPetView: View {
                     }
                     
                     // saúde
-                    GroupBox(label: Label("Saúde", systemImage: "cross.circle.fill").foregroundColor(Color("AppGreen"))) {
+                    GroupBox(label: Label(String(localized: "addpet.section.health"), systemImage: "cross.circle.fill").foregroundColor(Color("AppGreen"))) {
                         VStack(spacing: 12) {
-                            Toggle("Vacinado", isOn: $vaccinated)
+                            Toggle(String(localized: "detail.vaccinated"), isOn: $vaccinated)
                                 .tint(Color("AppGreen"))
                             Divider()
-                            Toggle("Castrado", isOn: $neutered)
+                            Toggle(String(localized: "detail.neutered"), isOn: $neutered)
                                 .tint(Color("AppGreen"))
                         }
                         .padding(.top, 8)
                     }
                     
                     // descrição
-                    GroupBox(label: Label("Descrição", systemImage: "text.alignleft").foregroundColor(Color("AppGreen"))) {
+                    GroupBox(label: Label(String(localized: "addpet.section.description"), systemImage: "text.alignleft").foregroundColor(Color("AppGreen"))) {
                         TextEditor(text: $description)
                             .frame(height: 100)
                             .padding(4)
@@ -98,19 +98,19 @@ struct AddPetView: View {
                     }
                     
                     // contato
-                    GroupBox(label: Label("Contato", systemImage: "phone.fill").foregroundColor(Color("AppGreen"))) {
+                    GroupBox(label: Label(String(localized: "addpet.section.contact"), systemImage: "phone.fill").foregroundColor(Color("AppGreen"))) {
                         VStack(spacing: 12) {
-                            CustomTextField(placeholder: "Seu nome", text: $contactName)
-                            CustomTextField(placeholder: "WhatsApp (ex: 47999999999)", text: $contactPhone)
+                            CustomTextField(placeholder: String(localized: "addpet.field.contactname"), text: $contactName)
+                            CustomTextField(placeholder: String(localized: "addpet.field.phone"), text: $contactPhone)
                                 .keyboardType(.phonePad)
-                            CustomTextField(placeholder: "Cidade - Estado", text: $city)
+                            CustomTextField(placeholder: String(localized: "addpet.field.city"), text: $city)
                         }
                         .padding(.top, 8)
                     }
                     
                     // btn salvar
                     Button(action: savePet) {
-                        Text("Cadastrar Pet")
+                        Text(String(localized: "addpet.button.save"))
                             .fontWeight(.semibold)
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
@@ -122,13 +122,13 @@ struct AddPetView: View {
                 }
                 .padding()
             }
-            .navigationTitle("Cadastrar Pet")
+            .navigationTitle(String(localized: "addpet.title"))
             .navigationBarTitleDisplayMode(.large)
             .background(Color(.systemGroupedBackground))
-            .alert("Pet cadastrado! 🐾", isPresented: $showSuccess) {
-                Button("OK") { resetForm() }
+            .alert((String(localized: "addpet.alert.title")), isPresented: $showSuccess) {
+                Button((String(localized: "addpet.alert.action"))) { resetForm() }
             } message: {
-                Text("\(name) foi adicionado com sucesso!")
+                Text(String(format: String(localized: "addpet.alert.message"), name))
             }
         }
     }

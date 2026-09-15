@@ -15,13 +15,13 @@ struct TabBarView: View {
             HomeView()
                 .environmentObject(viewModel)
                 .tabItem {
-                    Label("Início", systemImage: "house.fill")
+                    Label(String(localized: "tabbar.home"), systemImage: "house.fill")
                 }
             
             AddPetView()
                 .environmentObject(viewModel)
                 .tabItem {
-                    Label("Cadastrar", systemImage: "plus.circle.fill")
+                    Label(String(localized: "tabbar.register"), systemImage: "plus.circle.fill")
                 }
         }
         .accentColor(Color("AppGreen"))

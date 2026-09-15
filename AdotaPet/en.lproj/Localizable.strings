@@ -1,0 +1,49 @@
+/* 
+  Localizable.strings
+  AdotaPet
+
+  Created by Ana Paula Lesniovski on 15/09/26.
+  
+*/
+
+// MARK: - Filters
+"filter.all" = "Todos";
+"filter.dog" = "Cachorro";
+"filter.cat" = "Gato";
+
+// MARK: - Home
+"home.greeting" = "Olá! 🐾";
+"home.title" = "Encontre um pet";
+"home.search.placeholder" = "Buscar por nome, raça ou cidade...";
+
+// MARK: - Pet Detail
+"detail.temperament" = "Temperamento";
+"detail.health" = "Saúde";
+"detail.vaccinated" = "Vacinado";
+"detail.neutered" = "Castrado";
+"detail.about" = "Sobre %@";
+"detail.contact.button" = "Entrar em contato com %@";
+
+// MARK: - Add Pet
+"addpet.title" = "Cadastrar Pet";
+"addpet.section.basic" = "Informações Básicas";
+"addpet.section.health" = "Saúde";
+"addpet.section.description" = "Descrição";
+"addpet.section.contact" = "Contato";
+"addpet.field.name" = "Nome do pet";
+"addpet.field.species" = "Espécie";
+"addpet.field.breed" = "Raça";
+"addpet.field.age" = "Idade (ex: 2 anos)";
+"addpet.field.gender" = "Gênero";
+"addpet.field.size" = "Porte";
+"addpet.field.contactname" = "Seu nome";
+"addpet.field.phone" = "WhatsApp (ex: 47999999999)";
+"addpet.field.city" = "Cidade - Estado";
+"addpet.button.save" = "Cadastrar Pet";
+"addpet.alert.title" = "Pet cadastrado! 🐾";
+"addpet.alert.message" = "%@ foi adicionado com sucesso!";
+"addpet.alert.action" = "OK";
+
+// MARK: - Tab Bar
+"tabbar.home" = "Início";
+"tabbar.register" = "Cadastrar";

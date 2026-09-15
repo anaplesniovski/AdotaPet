@@ -58,7 +58,7 @@ struct PetDetailView: View {
                     
                     // temperamento
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Temperamento")
+                        Text(String(localized: "detail.temperament"))
                             .font(.headline)
                             .fontWeight(.bold)
                         ScrollView(.horizontal, showsIndicators: false) {
@@ -79,18 +79,18 @@ struct PetDetailView: View {
                     
                     // saúde
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Saúde")
+                        Text(String(localized: "detail.health"))
                             .font(.headline)
                             .fontWeight(.bold)
                         HStack(spacing: 12) {
                             HealthBadge(
                                 icon: "cross.circle.fill",
-                                text: "Vacinado",
+                                text: String(localized: "detail.vaccinated"),
                                 isActive: pet.vaccinated
                             )
                             HealthBadge(
                                 icon: "scissors",
-                                text: "Castrado",
+                                text: String(localized: "detail.neutered"),
                                 isActive: pet.neutered
                             )
                         }
@@ -98,7 +98,7 @@ struct PetDetailView: View {
                     
                     // descrição
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Sobre \(pet.name)")
+                        Text(String(format: String(localized: "detail.about"), pet.name))
                             .font(.headline)
                             .fontWeight(.bold)
                         Text(pet.description)
@@ -116,7 +116,7 @@ struct PetDetailView: View {
                     }) {
                         HStack {
                             Image(systemName: "message.fill")
-                            Text("Entrar em contato com \(pet.contactName)")
+                            Text(String(format: String(localized: "detail.contact.button"), pet.contactName))
                                 .fontWeight(.semibold)
                         }
                         .foregroundColor(.white)
