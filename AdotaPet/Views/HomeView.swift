@@ -43,7 +43,6 @@ struct HomeView: View {
                     // filtros por espécie
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 12) {
-                            // botão "Todos"
                             SpeciesFilterButton(
                                 title: String(localized: "filter.all"),
                                 isSelected: viewModel.selectedSpecies == nil
@@ -51,7 +50,6 @@ struct HomeView: View {
                                 viewModel.selectedSpecies = nil
                             }
                             
-                            // botões por espécie
                             ForEach(viewModel.speciesOptions, id: \.self) { species in
                                 SpeciesFilterButton(
                                     title: species.name,
@@ -64,16 +62,20 @@ struct HomeView: View {
                         .padding(.horizontal)
                     }
                     
-                    // lista de pets
-                    LazyVStack(spacing: 16) {
-                        ForEach(viewModel.filteredPets) { pet in
-                            NavigationLink(value: pet) {
-                                PetCardView(pet: pet)
+                    // lista de pets ou empty state
+                    if viewModel.filteredPets.isEmpty {
+                        EmptyStateView()
+                    } else {
+                        LazyVStack(spacing: 16) {
+                            ForEach(viewModel.filteredPets) { pet in
+                                NavigationLink(value: pet) {
+                                    PetCardView(pet: pet)
+                                }
+                                .buttonStyle(PlainButtonStyle())
                             }
-                            .buttonStyle(PlainButtonStyle())
                         }
+                        .padding(.horizontal)
                     }
-                    .padding(.horizontal)
                 }
                 .padding(.vertical)
             }

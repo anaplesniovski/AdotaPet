@@ -15,15 +15,12 @@ struct PetDetailView: View {
             VStack(alignment: .leading, spacing: 24) {
                 
                 // foto do pet
-                RoundedRectangle(cornerRadius: 24)
-                    .fill(Color("AppGreen").opacity(0.15))
+                Image(pet.imageName)
+                    .resizable()
+                    .scaledToFill()
                     .frame(maxWidth: .infinity)
                     .frame(height: 280)
-                    .overlay(
-                        Image(systemName: pet.species.icon)
-                            .font(.system(size: 80))
-                            .foregroundColor(Color("AppGreen"))
-                    )
+                    .clipShape(RoundedRectangle(cornerRadius: 24))
                     .padding(.horizontal)
                 
                 VStack(alignment: .leading, spacing: 20) {

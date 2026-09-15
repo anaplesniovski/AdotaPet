@@ -22,7 +22,7 @@ struct MockPets {
             neutered: true,
             contactName: "Ana Paula",
             contactPhone: "47999999999",
-            imageName: "dog1",
+            imageName: "thor",
             city: "Barra Velha - SC"
         ),
         Pet(
@@ -38,7 +38,7 @@ struct MockPets {
             neutered: true,
             contactName: "Carlos",
             contactPhone: "47988888888",
-            imageName: "cat1",
+            imageName: "luna",
             city: "Barra Velha - SC"
         ),
         Pet(
@@ -54,7 +54,7 @@ struct MockPets {
             neutered: true,
             contactName: "Marina",
             contactPhone: "47977777777",
-            imageName: "dog2",
+            imageName: "bob",
             city: "Barra Velha - SC"
         ),
         Pet(
@@ -70,7 +70,7 @@ struct MockPets {
             neutered: true,
             contactName: "João",
             contactPhone: "47966666666",
-            imageName: "cat2",
+            imageName: "mel",
             city: "Barra Velha - SC"
         ),
         Pet(
@@ -86,7 +86,7 @@ struct MockPets {
             neutered: false,
             contactName: "Pedro",
             contactPhone: "47955555555",
-            imageName: "dog3",
+            imageName: "rex",
             city: "Barra Velha - SC"
         )
     ]

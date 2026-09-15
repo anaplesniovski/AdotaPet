@@ -13,14 +13,11 @@ struct PetCardView: View {
     var body: some View {
         HStack(spacing: 16) {
             // foto do pet
-            RoundedRectangle(cornerRadius: 12)
-                .fill(Color("AppGreen").opacity(0.15))
+            Image(pet.imageName)
+                .resizable()
+                .scaledToFill()
                 .frame(width: 90, height: 90)
-                .overlay(
-                    Image(systemName: pet.species.icon)
-                        .font(.system(size: 36))
-                        .foregroundColor(Color("AppGreen"))
-                )
+                .clipShape(RoundedRectangle(cornerRadius: 12))
             
             // Infos
             VStack(alignment: .leading, spacing: 6) {

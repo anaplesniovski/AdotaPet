@@ -56,3 +56,7 @@
 "addpet.size.small" = "Pequeno";
 "addpet.size.medium" = "Médio";
 "addpet.size.large" = "Grande";
+
+// MARK: - Empty State
+"empty.title" = "Nenhum pet encontrado";
+"empty.subtitle" = "Tente buscar por outro nome, raça ou cidade";
