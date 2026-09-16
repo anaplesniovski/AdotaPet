@@ -12,7 +12,7 @@ struct EmptyStateView: View {
         VStack(spacing: 16) {
             Image(systemName: "pawprint.slash.fill")
                 .font(.system(size: 60))
-                .foregroundColor(Color("AppGreen").opacity(0.5))
+                .foregroundStyle(Color("AppGreen").opacity(0.5))
             
             Text(String(localized: "empty.title"))
                 .font(.headline)
@@ -20,7 +20,7 @@ struct EmptyStateView: View {
             
             Text(String(localized: "empty.subtitle"))
                 .font(.subheadline)
-                .foregroundColor(.secondary)
+                .foregroundStyle(.secondary) 
                 .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity)

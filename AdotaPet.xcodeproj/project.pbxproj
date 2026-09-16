@@ -32,8 +32,8 @@
 		56A9D06B3058393F004E63B3 = {
 			isa = PBXGroup;
 			children = (
-				56A9D0763058393F004E63B3 /* AdotaPet */,
 				56A9D0753058393F004E63B3 /* Products */,
+				56A9D0763058393F004E63B3 /* AdotaPet */,
 			);
 			sourceTree = "<group>";
 		};

@@ -24,7 +24,7 @@ struct TabBarView: View {
                     Label(String(localized: "tabbar.register"), systemImage: "plus.circle.fill")
                 }
         }
-        .accentColor(Color("AppGreen"))
+        .tint(Color("AppGreen"))
     }
 }
 

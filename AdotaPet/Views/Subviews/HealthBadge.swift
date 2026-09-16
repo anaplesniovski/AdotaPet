@@ -20,10 +20,10 @@ struct HealthBadge: View {
                 .font(.subheadline)
                 .fontWeight(.medium)
         }
-        .foregroundColor(isActive ? Color("AppGreen") : .secondary)
+        .foregroundStyle(isActive ? Color("AppGreen") : .secondary)
         .padding(.horizontal, 12)
         .padding(.vertical, 8)
         .background(isActive ? Color("AppGreen").opacity(0.15) : Color(.systemGray6))
-        .cornerRadius(12)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 }

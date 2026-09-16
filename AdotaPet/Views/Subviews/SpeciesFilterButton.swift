@@ -17,11 +17,11 @@ struct SpeciesFilterButton: View {
             Text(title)
                 .font(.subheadline)
                 .fontWeight(isSelected ? .semibold : .regular)
-                .foregroundColor(isSelected ? .white : .primary)
+                .foregroundStyle(isSelected ? .white : .primary)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 8)
                 .background(isSelected ? Color("AppGreen") : Color(.systemGray6))
-                .cornerRadius(20)
+                .clipShape(Capsule())
         }
     }
 }

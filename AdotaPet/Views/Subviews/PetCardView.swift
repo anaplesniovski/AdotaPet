@@ -9,52 +9,61 @@ import SwiftUI
 
 struct PetCardView: View {
     let pet: Pet
-    
+
     var body: some View {
         HStack(spacing: 16) {
-            // foto do pet
-            Image(pet.imageName)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 90, height: 90)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
-            
-            // Infos
-            VStack(alignment: .leading, spacing: 6) {
-                Text(pet.name)
-                    .font(.headline)
-                    .fontWeight(.bold)
-                
-                Text("\(pet.breed) • \(pet.species.name)")
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                
-                HStack(spacing: 8) {
-                    Label(pet.age, systemImage: "calendar")
-                    Label(pet.gender.label, systemImage: "pawprint.fill")
-                }
-                .font(.caption)
-                .foregroundColor(.secondary)
-                
-                HStack(spacing: 4) {
-                    Image(systemName: "mappin.circle.fill")
-                        .foregroundColor(Color("AppGreen"))
-                    Text(pet.city)
-                        .foregroundColor(.secondary)
-                }
-                .font(.caption)
-            }
-            
+            petImage
+            petInfo
             Spacer()
-            
-            Image(systemName: "chevron.right")
-                .foregroundColor(.secondary)
-                .font(.caption)
+            chevron
         }
         .padding(16)
         .background(Color(.systemBackground))
-        .cornerRadius(16)
+        .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 2)
+    }
+
+    // MARK: - Sections
+
+    private var petImage: some View {
+        Image(pet.imageName)
+            .resizable()
+            .scaledToFill()
+            .frame(width: 90, height: 90)
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+    }
+
+    private var petInfo: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(pet.name)
+                .font(.headline)
+                .fontWeight(.bold)
+
+            Text("\(pet.breed) • \(pet.species.name)")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+
+            HStack(spacing: 8) {
+                Label(pet.age, systemImage: "calendar")
+                Label(pet.gender.label, systemImage: "pawprint.fill")
+            }
+            .font(.caption)
+            .foregroundStyle(.secondary)
+
+            HStack(spacing: 4) {
+                Image(systemName: "mappin.circle.fill")
+                    .foregroundStyle(Color("AppGreen"))
+                Text(pet.city)
+                    .foregroundStyle(.secondary)
+            }
+            .font(.caption)
+        }
+    }
+
+    private var chevron: some View {
+        Image(systemName: "chevron.right")
+            .foregroundStyle(.secondary)
+            .font(.caption)
     }
 }
 
