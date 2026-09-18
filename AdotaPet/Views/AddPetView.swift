@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import PhotosUI
 
 struct AddPetView: View {
     @EnvironmentObject var viewModel: PetViewModel
 
     @State private var form = PetForm()
     @State private var showSuccess = false
+    @State private var selectedPhoto: PhotosPickerItem? = nil
 
     var body: some View {
         NavigationStack {
@@ -32,6 +34,7 @@ struct AddPetView: View {
             .alert(String(localized: "addpet.alert.title"), isPresented: $showSuccess) {
                 Button(String(localized: "addpet.alert.action")) {
                     form.reset()
+                    selectedPhoto = nil
                 }
             } message: {
                 Text(String(format: String(localized: "addpet.alert.message"), form.name))
@@ -42,14 +45,36 @@ struct AddPetView: View {
     // MARK: - Sections
 
     private var petIcon: some View {
-        RoundedRectangle(cornerRadius: 24)
-            .fill(Color("AppGreen").opacity(0.15))
-            .frame(height: 140)
-            .overlay {
-                Image(systemName: form.species.icon)
-                    .font(.system(size: 60))
-                    .foregroundStyle(Color("AppGreen"))
+        PhotosPicker(selection: $selectedPhoto, matching: .images) {
+            if let imageData = form.imageData, let uiImage = UIImage(data: imageData) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(height: 140)
+                    .clipShape(RoundedRectangle(cornerRadius: 24))
+            } else {
+                RoundedRectangle(cornerRadius: 24)
+                    .fill(Color("AppGreen").opacity(0.15))
+                    .frame(height: 140)
+                    .overlay {
+                        VStack(spacing: 8) {
+                            Image(systemName: form.species.icon)
+                                .font(.system(size: 50))
+                                .foregroundStyle(Color("AppGreen"))
+                            Text(String(localized: "addpet.photo.placeholder"))
+                                .font(.caption)
+                                .foregroundStyle(Color("AppGreen"))
+                        }
+                    }
             }
+        }
+        .onChange(of: selectedPhoto) { _, newItem in
+            Task {
+                if let data = try? await newItem?.loadTransferable(type: Data.self) {
+                    form.imageData = data
+                }
+            }
+        }
     }
 
     private var basicInfoSection: some View {

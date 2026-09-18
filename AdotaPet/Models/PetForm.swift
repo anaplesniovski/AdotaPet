@@ -20,13 +20,14 @@ struct PetForm {
     var contactName = ""
     var contactPhone = ""
     var city = ""
-    
+    var imageData: Data? = nil
+
     var isValid: Bool {
         !name.isBlank && !breed.isBlank && !age.isBlank &&
         !description.isBlank && !contactName.isBlank &&
         !contactPhone.isBlank && !city.isBlank
     }
-    
+
     func makePet() -> Pet {
         Pet(
             name: name.trimmed,
@@ -41,11 +42,11 @@ struct PetForm {
             neutered: neutered,
             contactName: contactName.trimmed,
             contactPhone: contactPhone.trimmed,
-            imageName: "",
+            image: imageData.map { .data($0) },
             city: city.trimmed
         )
     }
-    
+
     mutating func reset() {
         self = PetForm()
     }
@@ -55,7 +56,7 @@ private extension String {
     var isBlank: Bool {
         trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
-    
+
     var trimmed: String {
         trimmingCharacters(in: .whitespacesAndNewlines)
     }

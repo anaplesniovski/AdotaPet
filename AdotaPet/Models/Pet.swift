@@ -21,6 +21,6 @@ struct Pet: Identifiable, Hashable {
     let neutered: Bool
     let contactName: String
     let contactPhone: String
-    let imageName: String
+    let image: PetImage?
     let city: String
 }

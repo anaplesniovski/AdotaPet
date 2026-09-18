@@ -41,3 +41,9 @@ enum PetSize: String, CaseIterable, Hashable {
         String(localized: String.LocalizationValue(self.rawValue))
     }
 }
+
+// MARK: - PetImage
+enum PetImage: Hashable {
+    case asset(String)
+    case data(Data)
+}

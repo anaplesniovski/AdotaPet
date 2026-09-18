@@ -12,25 +12,22 @@ struct PetCardView: View {
 
     var body: some View {
         HStack(spacing: 16) {
-            petImage
+            PetImageView(pet: pet, cornerRadius: 12)
+                .frame(width: 90, height: 90)
+                .clipped()
+
             petInfo
+
             Spacer()
-            chevron
+
+            Image(systemName: "chevron.right")
+                .foregroundStyle(.secondary)
+                .font(.caption)
         }
         .padding(16)
         .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .shadow(color: .black.opacity(0.06), radius: 8, x: 0, y: 2)
-    }
-
-    // MARK: - Sections
-
-    private var petImage: some View {
-        Image(pet.imageName)
-            .resizable()
-            .scaledToFill()
-            .frame(width: 90, height: 90)
-            .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 
     private var petInfo: some View {
@@ -58,12 +55,6 @@ struct PetCardView: View {
             }
             .font(.caption)
         }
-    }
-
-    private var chevron: some View {
-        Image(systemName: "chevron.right")
-            .foregroundStyle(.secondary)
-            .font(.caption)
     }
 }
 

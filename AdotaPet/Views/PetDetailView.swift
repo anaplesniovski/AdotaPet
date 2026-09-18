@@ -33,12 +33,10 @@ struct PetDetailView: View {
     // MARK: - Sections
 
     private var petImage: some View {
-        Image(pet.imageName)
-            .resizable()
-            .scaledToFill()
+        PetImageView(pet: pet)
             .frame(maxWidth: .infinity)
             .frame(height: 280)
-            .clipShape(RoundedRectangle(cornerRadius: 24))
+            .clipped()
             .padding(.horizontal)
     }
 

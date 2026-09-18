@@ -60,3 +60,6 @@
 // MARK: - Empty State
 "empty.title" = "Nenhum pet encontrado";
 "empty.subtitle" = "Tente buscar por outro nome, raça ou cidade";
+
+// MARK: - Photo
+"addpet.photo.placeholder" = "Toque para adicionar uma foto";
