@@ -11,7 +11,7 @@ import SwiftUI
 struct AdotaPetApp: App {
     var body: some Scene {
         WindowGroup {
-            TabBarView()
+            SplashView()
         }
     }
 }
