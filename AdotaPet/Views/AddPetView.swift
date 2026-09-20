@@ -10,6 +10,7 @@ import PhotosUI
 
 struct AddPetView: View {
     @EnvironmentObject var viewModel: PetViewModel
+    @Binding var selectedTab: Int
 
     @State private var form = PetForm()
     @State private var showSuccess = false
@@ -35,6 +36,7 @@ struct AddPetView: View {
                 Button(String(localized: "addpet.alert.action")) {
                     form.reset()
                     selectedPhoto = nil
+                    selectedTab = 0
                 }
             } message: {
                 Text(String(format: String(localized: "addpet.alert.message"), form.name))
@@ -175,12 +177,13 @@ struct AddPetView: View {
     }
 
     private func savePet() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
         viewModel.addPet(form.makePet())
         showSuccess = true
     }
 }
 
 #Preview {
-    AddPetView()
+    AddPetView(selectedTab: .constant(1))
         .environmentObject(PetViewModel())
 }

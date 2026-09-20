@@ -21,6 +21,7 @@ struct HomeView: View {
                 }
                 .padding(.vertical)
             }
+            .scrollDismissesKeyboard(.immediately)
             .navigationBarHidden(true)
             .background(Color(.systemGroupedBackground))
             .navigationDestination(for: Pet.self) { pet in
@@ -51,6 +52,7 @@ struct HomeView: View {
             Image(systemName: "magnifyingglass")
                 .foregroundStyle(.secondary)
             TextField(String(localized: "home.search.placeholder"), text: $viewModel.searchText)
+                .submitLabel(.search)
         }
         .padding(12)
         .background(Color(.systemGray6))

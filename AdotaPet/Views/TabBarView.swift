@@ -9,20 +9,23 @@ import SwiftUI
 
 struct TabBarView: View {
     @StateObject private var viewModel = PetViewModel()
-    
+    @State private var selectedTab = 0
+
     var body: some View {
-        TabView {
+        TabView(selection: $selectedTab) {
             HomeView()
                 .environmentObject(viewModel)
                 .tabItem {
                     Label(String(localized: "tabbar.home"), systemImage: "house.fill")
                 }
-            
-            AddPetView()
+                .tag(0)
+
+            AddPetView(selectedTab: $selectedTab)
                 .environmentObject(viewModel)
                 .tabItem {
                     Label(String(localized: "tabbar.register"), systemImage: "plus.circle.fill")
                 }
+                .tag(1)
         }
         .tint(Color("AppGreen"))
     }
